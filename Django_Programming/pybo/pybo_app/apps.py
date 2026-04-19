@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class PyboAppConfig(AppConfig):
+class PyboConfig(AppConfig):
     name = 'pybo_app'
