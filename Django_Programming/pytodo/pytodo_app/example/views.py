@@ -26,5 +26,5 @@ def booksAPI(request):
 @api_view(["GET"])
 def bookAPI(request, bid):
     book = get_object_or_404(Book, bid=bid)
-    serializer = BookSerializer(Book)
+    serializer = BookSerializer(book)
     return Response(serializer.data, status=status.HTTP_200_OK)
