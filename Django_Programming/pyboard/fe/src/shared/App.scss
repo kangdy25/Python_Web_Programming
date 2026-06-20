@@ -1,0 +1,634 @@
+@charset "utf-8";
+
+// Google Fonts for high-end typography
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+// 1. Bulma Custom Variables Overrides
+$primary: #6366f1; // Indigo
+$info: #0ea5e9; // Sky Blue
+$success: #10b981; // Emerald
+$warning: #f59e0b; // Amber
+$danger: #f43f5e; // Rose
+
+$dark: #0f172a; // Slate 900
+$text: #334155; // Slate 700
+$text-strong: #0f172a;
+$body-background-color: #f8fafc; // Slate 50
+
+$family-sans-serif: 'Outfit', 'Noto Sans KR', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+$card-background-color: #ffffff;
+$card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(0, 0, 0, 0.02);
+$card-radius: 16px;
+
+$input-radius: 10px;
+$input-border-color: #e2e8f0;
+$input-shadow: none;
+
+$button-border-width: 1px;
+$button-padding-vertical: 0.5rem;
+$button-padding-horizontal: 1.25rem;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// 2. Import Bulma core and required files using relative path
+@import '../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../node_modules/bulma/sass/base/_all.sass';
+@import '../../node_modules/bulma/sass/grid/_all.sass';
+@import '../../node_modules/bulma/sass/form/_all.sass';
+@import '../../node_modules/bulma/sass/elements/button.sass';
+@import '../../node_modules/bulma/sass/elements/container.sass';
+@import '../../node_modules/bulma/sass/elements/content.sass';
+@import '../../node_modules/bulma/sass/elements/icon.sass';
+@import '../../node_modules/bulma/sass/elements/tag.sass';
+@import '../../node_modules/bulma/sass/elements/title.sass';
+@import '../../node_modules/bulma/sass/components/navbar.sass';
+@import '../../node_modules/bulma/sass/components/level.sass';
+@import '../../node_modules/bulma/sass/layout/hero.sass';
+@import '../../node_modules/bulma/sass/layout/section.sass';
+@import '../../node_modules/bulma/sass/layout/footer.sass';
+
+// 3. Custom Utility Styles (upgrading App.css style classes)
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.tcentered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.ncentered {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.mcentered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.centered-padding {
+  overflow: hidden;
+  max-width: 100%;
+  max-height: fit-content;
+  padding: 24px;
+}
+
+p {
+  max-width: 640px;
+  word-break: break-all;
+  color: $text;
+  line-height: 1.6;
+}
+
+.preview {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+// 4. Premium Aesthetic Details & Layout Style overrides
+body {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  min-height: 100vh;
+  color: #334155;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Sleek Sticky Glass Header Navbar
+.navbar {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+
+  .navbar-brand {
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, $primary 0%, $info 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
+    }
+  }
+
+  .navbar-end {
+    align-items: center;
+  }
+
+  .navbar-item {
+    padding: 0.5rem 0.75rem;
+
+    .button {
+      border-radius: 9999px;
+      font-weight: 600;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+      &:hover {
+        transform: translateY(-1.5px);
+        box-shadow: 0 6px 12px -2px rgba(99, 102, 241, 0.15);
+      }
+
+      &.is-primary {
+        background-color: $primary;
+        border-color: transparent;
+        &:hover {
+          background-color: darken($primary, 5%);
+        }
+      }
+
+      &.is-info {
+        background-color: $info;
+        border-color: transparent;
+        &:hover {
+          background-color: darken($info, 5%);
+        }
+      }
+    }
+  }
+}
+
+// Menu Nav Style (Sleek Floating Pill Tab)
+.menu-nav-container {
+  display: flex;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 9999px;
+  padding: 5px;
+  margin: 1.5rem auto 1.5rem;
+  max-width: fit-content;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.menu-link {
+  padding: 8px 24px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #64748b !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  
+  &:hover {
+    color: $primary !important;
+    background: rgba(99, 102, 241, 0.06);
+  }
+
+  &.router-link-exact-active {
+    color: #ffffff !important;
+    background: $primary;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+  }
+}
+
+// Post Card Customizations (Feed)
+.columns.is-multiline {
+  margin-top: 0.5rem;
+}
+
+.card {
+  border-radius: $card-radius;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: $card-shadow;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    border-color: rgba(99, 102, 241, 0.25);
+  }
+
+  .card-image {
+    position: relative;
+    overflow: hidden;
+    background: #f1f5f9;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+    
+    img {
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &:hover .card-image img {
+    transform: scale(1.06);
+  }
+
+  .card-content {
+    padding: 1.25rem 1.5rem 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.42;
+      margin-bottom: 0.35rem;
+      transition: color 0.2s ease;
+    }
+
+    &:hover .title {
+      color: $primary;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-bottom: 0.75rem;
+    }
+
+    .content {
+      color: #475569;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Styled Forms, Inputs and Boxes
+.box {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+  padding: 2.5rem;
+  
+  .label {
+    font-weight: 600;
+    color: #334155;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .input, .textarea {
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    color: #0f172a;
+    
+    &:hover {
+      border-color: #cbd5e1;
+      background-color: #f1f5f9;
+    }
+    
+    &:focus {
+      border-color: $primary;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+    }
+  }
+}
+
+// Hero layout (used in Login/Register)
+.hero {
+  &.is-warning {
+    background: radial-gradient(circle at 10% 20%, rgba(243, 244, 246, 0.9) 0%, rgba(224, 231, 255, 0.4) 90%) !important;
+    color: #1e293b !important;
+    
+    .hero-body {
+      padding: 4rem 1.5rem;
+    }
+  }
+}
+
+// Detail Page Post Styling
+.post-detail-container {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  padding: 3rem;
+  margin-bottom: 2rem;
+  
+  @media screen and (max-width: 768px) {
+    padding: 1.5rem;
+  }
+
+  .head {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+
+    .title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #64748b;
+    }
+    
+    .level {
+      margin-top: 1rem;
+      
+      .level-right {
+        .icon {
+          color: #94a3b8;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          font-size: 1.25rem;
+          margin-left: 1rem;
+          
+          &:hover {
+            color: $danger;
+            transform: scale(1.1);
+          }
+          
+          &:last-child:hover {
+            color: $info;
+          }
+        }
+      }
+    }
+  }
+
+  .my-body {
+    .image {
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 12px 20px -8px rgba(0,0,0,0.08);
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        max-height: 480px;
+      }
+    }
+
+    .content {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #334155;
+      p {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+// Profile Page Styles
+.profile-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  padding: 3rem 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  
+  .profile-image-container {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    
+    .image {
+      border-radius: 9999px;
+      border: 4px solid #ffffff;
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2);
+      overflow: hidden;
+      background: #f1f5f9;
+      
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  .title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: #64748b;
+    font-weight: 500;
+  }
+
+  .tags {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    
+    .tag {
+      background: rgba(99, 102, 241, 0.08);
+      color: $primary;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.5em 1em;
+      border: 1px solid rgba(99, 102, 241, 0.15);
+    }
+  }
+  
+  .input {
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+}
+
+// Comment Form Custom Styles
+.comment-section-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+  padding: 2rem;
+  margin-top: 2rem;
+  
+  .label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 1rem;
+  }
+
+  .textarea {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: #cbd5e1;
+    }
+    
+    &:focus {
+      background-color: #ffffff;
+      border-color: $primary;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    }
+  }
+}
+
+// Footer Styling
+footer.footer {
+  background-color: transparent;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  padding: 3rem 1.5rem;
+  margin-top: 4rem;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+// ==========================================
+// 5. Mobile Responsiveness & Grid Layout Fixes
+// ==========================================
+
+// Global container padding scaling on mobile
+@media screen and (max-width: 768px) {
+  .ncentered {
+    padding: 16px 12px;
+  }
+}
+
+// Floating Menu Pill Tab Responsiveness on Mobile
+@media screen and (max-width: 576px) {
+  .menu-nav-container {
+    width: 92%;
+    margin: 1rem auto;
+    padding: 4px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu-link {
+    padding: 6px 14px;
+    font-size: 0.825rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+// Sticky Header Navbar Mobile Layout (Prevent standard Bulma hiding)
+.navbar {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center;
+
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-end {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    margin-left: auto;
+    
+    .navbar-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 1rem !important;
+
+    .navbar-brand {
+      h1 {
+        font-size: 1.15rem;
+      }
+      .icon {
+        font-size: 0.9rem !important;
+      }
+    }
+
+    .navbar-end {
+      .navbar-item {
+        padding: 0.25rem 0.35rem !important;
+
+        .button {
+          padding: 0.4rem 0.75rem;
+          font-size: 0.775rem;
+          border-radius: 9999px;
+
+          // On mobile, hide the text and display only the icon
+          span:not(.icon) {
+            display: none !important;
+          }
+
+          .icon {
+            margin: 0 !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Fade-in entry animation for premium application feel
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Apply animation to routing view pages
+.ncentered {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
