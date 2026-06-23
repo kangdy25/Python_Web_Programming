@@ -1,7 +1,5 @@
 @charset "utf-8";
-
-// Google Fonts for high-end typography
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+@use "sass:color";
 
 // 1. Bulma Custom Variables Overrides
 $primary: #6366f1; // Indigo
@@ -30,22 +28,44 @@ $button-padding-horizontal: 1.25rem;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
-// 2. Import Bulma core and required files using relative path
-@import '../../node_modules/bulma/sass/utilities/_all.sass';
-@import '../../node_modules/bulma/sass/base/_all.sass';
-@import '../../node_modules/bulma/sass/grid/_all.sass';
-@import '../../node_modules/bulma/sass/form/_all.sass';
-@import '../../node_modules/bulma/sass/elements/button.sass';
-@import '../../node_modules/bulma/sass/elements/container.sass';
-@import '../../node_modules/bulma/sass/elements/content.sass';
-@import '../../node_modules/bulma/sass/elements/icon.sass';
-@import '../../node_modules/bulma/sass/elements/tag.sass';
-@import '../../node_modules/bulma/sass/elements/title.sass';
-@import '../../node_modules/bulma/sass/components/navbar.sass';
-@import '../../node_modules/bulma/sass/components/level.sass';
-@import '../../node_modules/bulma/sass/layout/hero.sass';
-@import '../../node_modules/bulma/sass/layout/section.sass';
-@import '../../node_modules/bulma/sass/layout/footer.sass';
+// 2. Import Bulma core and required files using modern @use directive
+@use "bulma/sass/utilities" with (
+  $primary: $primary,
+  $info: $info,
+  $success: $success,
+  $warning: $warning,
+  $danger: $danger,
+  $dark: $dark,
+  $text: $text,
+  $text-strong: $text-strong,
+  $family-sans-serif: $family-sans-serif,
+  $widescreen-enabled: $widescreen-enabled,
+  $fullhd-enabled: $fullhd-enabled
+);
+
+@use "bulma/sass/base" with (
+  $body-background-color: $body-background-color
+);
+@use "bulma/sass/grid";
+@use "bulma/sass/form";
+@use "bulma/sass/elements/button" with (
+  $button-border-width: $button-border-width,
+  $button-padding-vertical: $button-padding-vertical,
+  $button-padding-horizontal: $button-padding-horizontal
+);
+@use "bulma/sass/elements/content";
+@use "bulma/sass/elements/icon";
+@use "bulma/sass/elements/tag";
+@use "bulma/sass/elements/title";
+@use "bulma/sass/components/navbar";
+@use "bulma/sass/layout/container";
+@use "bulma/sass/layout/level";
+@use "bulma/sass/layout/hero";
+@use "bulma/sass/layout/section";
+@use "bulma/sass/layout/footer";
+
+// Google Fonts for high-end typography (imported after @use rules)
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
 
 // 3. Custom Utility Styles (upgrading App.css style classes)
 .centered {
@@ -154,7 +174,7 @@ body {
         background-color: $primary;
         border-color: transparent;
         &:hover {
-          background-color: darken($primary, 5%);
+          background-color: color.adjust($primary, $lightness: -5%);
         }
       }
 
@@ -162,7 +182,7 @@ body {
         background-color: $info;
         border-color: transparent;
         &:hover {
-          background-color: darken($info, 5%);
+          background-color: color.adjust($info, $lightness: -5%);
         }
       }
     }
