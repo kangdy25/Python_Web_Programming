@@ -128,10 +128,12 @@ const postClick = () => {
   const token = localStorage.getItem("token");
   console.log("[*] createPost");
   const formData = new FormData();
-  formData.append("Title", title.value);
-  // formData.append("category", category.value);
-  formData.append("Content", body.value);
-  // formData.append("image", image.value);
+  formData.append("title", title.value);
+  formData.append("category", category.value);
+  formData.append("body", body.value);
+  if (image.value) {
+    formData.append("image", image.value);
+  }
   console.log(Array.from(formData.entries()));
 
   axios

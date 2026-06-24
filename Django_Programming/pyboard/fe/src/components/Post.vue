@@ -3,14 +3,14 @@
     <div class="head">
       <div class="tag-row mb-3">
         <span class="tag is-primary is-light">
-          {{ post?.Category || '일반' }}
+          {{ post?.category || '일반' }}
         </span>
       </div>
-      <h1 class="title">{{ post?.Title }}</h1>
+      <h1 class="title">{{ post?.title }}</h1>
       <div class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
-            <h2 class="subtitle">@{{ post?.UserID || 'TaeBbong' }}</h2>
+            <h2 class="subtitle">@{{ post?.profile?.nickname || 'TaeBbong' }}</h2>
           </div>
         </div>
         <div class="level-right">
@@ -31,13 +31,13 @@
     <div class="my-body">
       <div class="image">
         <img
-          :src="post?.Image || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=80'"
+          :src="post?.image || 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&auto=format&fit=crop&q=80'"
           alt="post image"
         />
       </div>
       <div class="content">
         <p>
-          {{ post?.Content || defaultContent }}
+          {{ post?.body || defaultContent }}
         </p>
       </div>
     </div>

@@ -15,8 +15,8 @@ const getPosts = () => {
   console.log("[*] getPosts");
   axios.get("http://localhost:8000/posts/").then((response) => {
     if (response.status < 300) {
-      console.log(response.data.result);
-      posts.value = response.data.result;
+      console.log(response.data);
+      posts.value = response.data;
     }
   });
 };

@@ -4,14 +4,14 @@
       <router-link
         :to="{
           name: 'Detail',
-          params: { pk: post.ID },
+          params: { pk: post.pk },
           state: { post: post }
         }"
       >
         <div class="card-image">
           <figure class="image is-16by9">
             <img
-              :src="post.Image || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=60'"
+              :src="post.image || 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=60'"
               alt="sample"
             />
           </figure>
@@ -20,15 +20,15 @@
           <div>
             <div class="tag-row mb-2">
               <span class="tag is-primary is-light">
-                {{ post.Category || '일반' }}
+                {{ post.category || '일반' }}
               </span>
             </div>
             <h2 class="title">
-              {{ post.Title }}
+              {{ post.title }}
             </h2>
-            <div class="subtitle">@{{ post.UserID || 'anonymous' }}</div>
+            <div class="subtitle">@{{ post.profile?.nickname || 'anonymous' }}</div>
             <div class="content preview">
-              <p>{{ post.Content }}</p>
+              <p>{{ post.body }}</p>
             </div>
           </div>
         </div>
