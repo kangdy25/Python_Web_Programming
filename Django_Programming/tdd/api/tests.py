@@ -15,3 +15,12 @@ class ModelTest(TestCase):
         self.book.save()
         new_count = Book.objects.count()
         self.assertNotEqual(old_count, new_count)
+
+class ViewTest(TestCase):
+    def setUp(self):
+        self.client = APIClient()
+        self.book_data = {'title': 'My Book 2', 'author': 'Daniel'}
+        self.response = self.client.post('/api/books/', self.book_data, format='json')
+
+    def test_api_can_create_a_book(self):
+        self.assertEqual(self.response.status_code, status.HTTP_201_CREATED)
